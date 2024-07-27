@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-from ..services.ocr_service import OCRService
+from ...services.ocr_service import OCRService
 
 router = APIRouter()
 
