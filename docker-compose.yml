@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: yourusername
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: yourdatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    command: streamlit run streamlit_app.py --server.port 8501 --server.enableCORS false
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "8501:8501"
+
+volumes:
+  postgres_data:
