@@ -10,8 +10,8 @@ medical_reports = st.file_uploader("Upload Medical Reports and Receipts", type=[
 if st.button("Submit"):
     if insurance_file and medical_reports:
         files = {
-            "insurance_file": insurance_file.getvalue(),
-            "medical_reports": medical_reports.getvalue()
+            "insurance_file": ("insurance_file.pdf", insurance_file.getvalue(), "application/pdf"),
+            "medical_reports": ("medical_reports.pdf", medical_reports.getvalue(), "application/pdf" if medical_reports.type == "application/pdf" else "image/jpeg")
         }
         response = requests.post("http://localhost:8000/process", files=files)
         st.write(response.json())

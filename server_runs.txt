@@ -1,5 +1,15 @@
 cd backend:  uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 cd frontend: streamlit run streamlit_app.py --server.port 8501 --server.enableCORS false
+cd backend   python -m unittest discover -s tests
 
 
+
+cd C:\Users\di-zi\insurance-claims-app
+git init  # Initialize your git repository if you haven't done it already
+git remote add origin https://github.com/zmdiv/insurance-claims-app.git
+
+git add .  # Stage all changes
+git commit -m "Describe your changes here"  # Commit changes with a message
+
+git push origin main
 

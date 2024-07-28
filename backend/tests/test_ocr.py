@@ -1,15 +1,22 @@
 import unittest
-from mockito import mock, when, verify
+from mockito import when, verify, unstub
 from app.services.ocr_service import OCRService
 
 class TestOCRService(unittest.TestCase):
+    def setUp(self):
+        self.ocr_service = OCRService()
+        self.image_content = b"dummy image content"
+
     def test_process_image(self):
-        ocr_service = OCRService()
-        image = mock()
-        
-        when(ocr_service).process_image(image).thenReturn("Extracted text")
+        when(self.ocr_service).process_image(self.image_content).thenReturn("Extracted text")
 
-        result = ocr_service.process_image(image)
+        result = self.ocr_service.process_image(self.image_content)
 
-        verify(ocr_service, times=1).process_image(image)
+        verify(self.ocr_service).process_image(self.image_content)
         self.assertEqual(result, "Extracted text")
+
+    def tearDown(self):
+        unstub()
+
+if __name__ == "__main__":
+    unittest.main()
