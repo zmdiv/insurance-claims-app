@@ -1,5 +1,6 @@
+# backend/app/endpoints/ocr.py
 from fastapi import APIRouter, UploadFile, File
-from ..services.ocr_service import OCRService
+from app.services.ocr_service import OCRService
 
 router = APIRouter()
 

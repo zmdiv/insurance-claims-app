@@ -1,8 +1,9 @@
+# backend/app/endpoints/claims.py
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ..dependencies import get_db
-from ..schemas import Claim, ClaimCreate
-from ..models.claim import Claim as ClaimModel
+from app.dependencies import get_db
+from app.schemas import Claim, ClaimCreate
+from app.models.claim import Claim as ClaimModel
 
 router = APIRouter()
 

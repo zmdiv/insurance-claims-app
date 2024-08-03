@@ -1,5 +1,6 @@
+# backend/app/main.py
 from fastapi import FastAPI
-from .api.endpoints import claims, ocr, user
+from app.endpoints import claims, ocr, user
 
 app = FastAPI()
 
