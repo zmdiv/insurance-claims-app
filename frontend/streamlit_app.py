@@ -4,7 +4,7 @@ import requests
 st.title("Insurance Claims Processor")
 
 st.header("Upload your files")
-insurance_file = st.file_uploader("Upload Insurance Coverage (PDF)", type=["pdf"])
+insurance_file = st.file_uploader("Upload Insurance Coverage (PDF)", type=["pdf", "jpg"])
 medical_reports = st.file_uploader("Upload Medical Reports and Receipts", type=["pdf", "jpg", "png"])
 
 if st.button("Submit"):
